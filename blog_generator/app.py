@@ -65,24 +65,16 @@ def generate_article_with_ai(title, details="", topic_keywords=""):
         return None, "Gemini API not configured"
     
     try:
-        prompt = f"""Write a comprehensive, well-structured blog article about: {title}
+        prompt = f"""Write a comprehensive blog article about: {title}
 
-Additional details: {details}
+{details if details else ''}
 
-Keywords to focus on: {topic_keywords}
+Focus on these keywords: {topic_keywords}
 
-Requirements:
-- Write in a professional yet engaging tone
-- Include an introduction that hooks the reader
-- Use clear headings and subheadings (use ## for main headings, ### for subheadings)
-- Provide practical examples and code snippets where relevant
-- Include best practices and tips
-- End with a conclusion that summarizes key points
-- Aim for 1000-1500 words
-- Use markdown formatting
-- Make it informative and valuable for developers
+Write in a professional tone with clear headings (use ## and ###), practical examples, 
+code snippets where relevant, and best practices. Aim for 1000-1500 words in markdown format.
 
-Please write the complete article now:"""
+Article:"""
 
         response = model.generate_content(prompt)
         
