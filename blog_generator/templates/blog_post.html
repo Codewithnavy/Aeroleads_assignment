@@ -207,7 +207,7 @@
                 {% endif %}
             </div>
 
-            <div class="article-content" id="content">
+            <div class="article-content" id="content" data-markdown="{{ post.content|tojson|safe }}">
                 <!-- Content will be rendered here by marked.js -->
             </div>
 
@@ -221,9 +221,17 @@
     </div>
 
     <script>
-        // Render markdown content
-        const content = {{ post.content|tojson }};
-        document.getElementById('content').innerHTML = marked.parse(content);
+        // Render markdown content from data attribute
+        (function() {
+            var contentEl = document.getElementById('content');
+            if (contentEl && typeof marked !== 'undefined') {
+                var markdownData = contentEl.getAttribute('data-markdown');
+                if (markdownData) {
+                    var content = JSON.parse(markdownData);
+                    contentEl.innerHTML = marked.parse(content);
+                }
+            }
+        })();
     </script>
 </body>
 </html>
