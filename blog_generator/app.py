@@ -322,6 +322,10 @@ def generate_default_articles():
     
     print(f"\nGenerated {len(blog_posts)} articles successfully!")
 
+@app.route('/health')
+def health():
+    return jsonify({"status": "ok", "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}), 200
+
 if __name__ == '__main__':
     print("=" * 60)
     print("Blog Generator App Starting...")
@@ -334,8 +338,11 @@ if __name__ == '__main__':
         # Generate default articles
         generate_default_articles()
     
-    print("\nAccess the blog at: http://localhost:5001/blog")
-    print("Access admin at: http://localhost:5001/blog/admin")
+    port = int(os.environ.get('PORT', 5001))
+    host = '0.0.0.0'
+    print(f"\nAccess the blog at: http://{host}:{port}/blog or http://localhost:{port}/blog")
+    print(f"Access admin at: http://{host}:{port}/blog/admin or http://localhost:{port}/blog/admin")
     print("=" * 60)
     
-    app.run(debug=True, port=5001)
+    debug_mode = os.environ.get('FLASK_ENV', 'development') != 'production'
+    app.run(debug=debug_mode, host=host, port=port)
