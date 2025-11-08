@@ -1,16 +1,21 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-import google.generativeai as genai
 import os
 import json
 from datetime import datetime
 import re
+
+# Import Google Generative AI with fallback
+try:
+    import google.generativeai as genai  # type: ignore
+except ImportError:
+    genai = None  # type: ignore
 
 app = Flask(__name__)
 
 # Configure Gemini API
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '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')
 
-if GEMINI_API_KEY:
+if GEMINI_API_KEY and genai:
     genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel('gemini-pro')
 else:
