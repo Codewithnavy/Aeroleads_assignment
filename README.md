@@ -1,10 +1,8 @@
 # Aeroleads Technical Assignment
 
-> **Comprehensive Full-Stack Development Assignment** featuring LinkedIn scraping, automated calling system, and AI-powered blog generation.
+Comprehensive Full-Stack Development Assignment featuring LinkedIn scraping, automated calling system, and AI-powered blog generation.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Codewithnavy/Aeroleads_assignment)
-
-## 📋 Overview
+## Overview
 
 This repository contains three complete projects demonstrating expertise in:
 - Web scraping with anti-detection mechanisms
@@ -13,9 +11,9 @@ This repository contains three complete projects demonstrating expertise in:
 - Full-stack web development
 - API integration
 
-## 🚀 Projects
+## Projects
 
-### 1. 📊 LinkedIn Scraper
+### 1. LinkedIn Scraper
 **Automated LinkedIn profile data extraction with intelligent anti-detection**
 
 - **Technology**: Python, Selenium WebDriver
@@ -30,7 +28,7 @@ This repository contains three complete projects demonstrating expertise in:
 - **Location**: `linkedin_scraper/`
 - **Setup**: See [linkedin_scraper/README.md](linkedin_scraper/README.md)
 
-### 2. 📞 Autodialer App
+### 2. Autodialer App
 **AI-powered automated calling system with natural language interface**
 
 - **Technology**: Python Flask, Twilio API, Amazon Polly AI Voice
@@ -47,7 +45,7 @@ This repository contains three complete projects demonstrating expertise in:
 - **Setup**: See [autodialer_app/README.md](autodialer_app/README.md)
 - **Live Demo**: [Will be deployed to Render/Railway]
 
-### 3. 📝 Blog Generator
+### 3. Blog Generator
 **AI-powered programming blog with automatic content generation**
 
 - **Technology**: Python Flask, Google Gemini AI
@@ -65,7 +63,7 @@ This repository contains three complete projects demonstrating expertise in:
 - **Setup**: See [blog_generator/README.md](blog_generator/README.md)
 - **Live Demo**: [Will be deployed to Render/Railway]
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Aeroleads_assignment/
@@ -95,7 +93,7 @@ Aeroleads_assignment/
 └── README.md                 # This file
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Languages & Frameworks
 - **Python 3.8+**: Primary language
@@ -115,7 +113,7 @@ Aeroleads_assignment/
 - `flask` - Web framework
 - `marked.js` - Markdown rendering
 
-## ⚙️ Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -163,7 +161,7 @@ python app.py
 # Access at http://localhost:5001/blog
 ```
 
-## 🎯 Key Features Demonstrated
+## Key Features Demonstrated
 
 ### 1. Web Scraping Expertise
 - Anti-detection techniques (user agent rotation, stealth mode)
@@ -195,34 +193,34 @@ python app.py
 - Bulk content generation with AI
 - Rate limiting and error handling
 
-## 📊 Project Highlights
+## Project Highlights
 
 ### LinkedIn Scraper
-- ✅ Scrapes 20 public LinkedIn profiles
-- ✅ Anti-detection measures implemented
-- ✅ CSV export with structured data
-- ✅ Handles missing profile elements gracefully
-- ✅ Randomized delays (3-10 seconds)
+- Scrapes 20 public LinkedIn profiles
+- Anti-detection measures implemented
+- CSV export with structured data
+- Handles missing profile elements gracefully
+- Randomized delays (3-10 seconds)
 
 ### Autodialer App
-- ✅ AI natural language commands
-- ✅ Single, bulk, and CSV upload modes
-- ✅ Real-time dashboard with statistics
-- ✅ Call logging and status tracking
-- ✅ Amazon Polly AI voice (Indian English)
-- ✅ Export logs functionality
-- ✅ Webhook integration for live updates
+- AI natural language commands
+- Single, bulk, and CSV upload modes
+- Real-time dashboard with statistics
+- Call logging and status tracking
+- Amazon Polly AI voice (Indian English)
+- Export logs functionality
+- Webhook integration for live updates
 
 ### Blog Generator
-- ✅ 10 default articles auto-generated
-- ✅ AI bulk generation from natural language
-- ✅ Comprehensive articles (1000-1500 words)
-- ✅ Beautiful blog interface
-- ✅ Admin panel for management
-- ✅ Markdown support with code syntax
-- ✅ SEO-friendly URLs
+- 10 default articles auto-generated
+- AI bulk generation from natural language
+- Comprehensive articles (1000-1500 words)
+- Beautiful blog interface
+- Admin panel for management
+- Markdown support with code syntax
+- SEO-friendly URLs
 
-## 🔐 Security & Best Practices
+## Security & Best Practices
 
 - Environment variables for sensitive data
 - `.gitignore` for credentials
@@ -232,7 +230,7 @@ python app.py
 - Ethical scraping practices
 - Legal compliance (TCPA/TRAI for calling)
 
-## 📝 Code Quality
+## Code Quality
 
 - **Clean Code**: Well-structured, readable, and maintainable
 - **Comments**: Comprehensive inline documentation
@@ -241,7 +239,7 @@ python app.py
 - **Not AI-Generated Looking**: Natural code style, human-like patterns
 - **Best Practices**: Following PEP 8, Flask conventions
 
-## 🚀 Deployment
+## Deployment
 
 ### Recommended Free Hosting
 
@@ -263,7 +261,7 @@ python app.py
 
 Will deploy both Flask apps to free hosting and share live URLs.
 
-## 📹 Video Demonstration
+## Video Demonstration
 
 A 6-7 minute video explaining:
 1. Code walkthrough for each project
@@ -274,14 +272,14 @@ A 6-7 minute video explaining:
 
 **Video will be uploaded to YouTube (unlisted) and URL shared.**
 
-## 📧 Contact & Submission
+## Contact & Submission
 
 - **GitHub Repository**: https://github.com/Codewithnavy/Aeroleads_assignment
 - **YouTube Video**: [Will be added]
 - **Live Demos**: [Will be added]
 - **WhatsApp**: 9981513777 (for submission)
 
-## 🎓 Learning Outcomes
+## Learning Outcomes
 
 This assignment demonstrates:
 - Advanced web scraping techniques
@@ -292,11 +290,11 @@ This assignment demonstrates:
 - Production-ready code practices
 - Documentation skills
 
-## 📄 License
+## License
 
 Created for Aeroleads technical assessment. All code is original work demonstrating technical capabilities.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Twilio for telephony API
 - Google for Gemini AI API

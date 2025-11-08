@@ -340,7 +340,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🤖 Autodialer AI</h1>
+            <h1>Autodialer AI</h1>
             <p>AI-Powered Automated Calling System with Twilio Integration</p>
         </div>
 
@@ -367,7 +367,7 @@
         <!-- AI Command Interface -->
         <div class="card">
             <div class="ai-prompt-box">
-                <h3>🎤 AI Voice Command</h3>
+                <h3>AI Voice Command</h3>
                 <input type="text" class="ai-input" id="ai-command" placeholder="Type: 'call +91XXXXXXXXXX' or 'dial 1800XXXXXX'">
                 <button class="btn btn-primary" onclick="executeAICommand()">Execute Command</button>
                 <div class="example-commands">
@@ -378,12 +378,12 @@
 
         <!-- Main Interface -->
         <div class="card">
-            <h2>📞 Make Calls</h2>
+            <h2>Make Calls</h2>
             
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('single')">Single Call</button>
-                <button class="tab" onclick="switchTab('bulk')">Bulk Calls</button>
-                <button class="tab" onclick="switchTab('upload')">Upload CSV</button>
+                <button class="tab active" onclick="switchTab('single', this)">Single Call</button>
+                <button class="tab" onclick="switchTab('bulk', this)">Bulk Calls</button>
+                <button class="tab" onclick="switchTab('upload', this)">Upload CSV</button>
             </div>
 
             <!-- Single Call Tab -->
@@ -416,7 +416,7 @@
             <div id="upload-tab" class="tab-content">
                 <div class="file-upload" onclick="document.getElementById('csv-file').click()">
                     <input type="file" id="csv-file" accept=".csv" onchange="handleFileUpload()">
-                    <p>📁 Click to upload CSV file</p>
+                    <p>Click to upload CSV file</p>
                     <small>CSV should have phone numbers in the first column</small>
                 </div>
                 <div id="uploaded-numbers" class="phone-list" style="display: none;"></div>
@@ -437,7 +437,7 @@
         <!-- Call Logs -->
         <div class="card">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2>📋 Call Logs</h2>
+                <h2>Call Logs</h2>
                 <button class="btn btn-secondary" onclick="exportLogs()">Export CSV</button>
             </div>
             <table class="logs-table">
@@ -462,14 +462,25 @@
     <script>
         let uploadedPhoneNumbers = [];
 
-        function switchTab(tab) {
+        function switchTab(tab, el) {
             // Remove active class from all tabs
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
-            // Add active class to selected tab
-            event.target.classList.add('active');
-            document.getElementById(tab + '-tab').classList.add('active');
+            // Add active class to selected tab button and show content
+            try {
+                if (el) el.classList.add('active');
+                else {
+                    // fallback: try to find the tab button by text
+                    const btn = Array.from(document.querySelectorAll('.tab')).find(b => b.textContent.trim().toLowerCase().startsWith(tab));
+                    if (btn) btn.classList.add('active');
+                }
+            } catch (e) {
+                console.warn('switchTab: could not set active class', e);
+            }
+
+            const content = document.getElementById(tab + '-tab');
+            if (content) content.classList.add('active');
         }
 
         function showAlert(message, type = 'info') {

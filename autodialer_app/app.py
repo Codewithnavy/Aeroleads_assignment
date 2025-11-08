@@ -1,6 +1,33 @@
 from flask import Flask, render_template, request, jsonify, send_file
 from twilio.rest import Client
-from twilio.twiml.voice_response import VoiceResponse, Say
+# Try to import Twilio's VoiceResponse/Say; if unavailable, provide a minimal fallback
+import importlib
+try:
+    _twilio_module = importlib.import_module('twilio.twiml.voice_response')
+    VoiceResponse = getattr(_twilio_module, 'VoiceResponse')
+    Say = getattr(_twilio_module, 'Say')
+    _TWILIO_AVAILABLE = True
+except Exception:
+    _TWILIO_AVAILABLE = False
+    class VoiceResponse:
+        def __init__(self):
+            self._parts = []
+        def append(self, part):
+            self._parts.append(str(part))
+        def pause(self, length=1):
+            self._parts.append(f'<Pause length="{length}"/>')
+        def say(self, text, voice=None, language=None):
+            # voice and language ignored in fallback
+            self._parts.append(f'<Say>{text}</Say>')
+        def __str__(self):
+            return '<?xml version="1.0" encoding="UTF-8"?><Response>' + ''.join(self._parts) + '</Response>'
+    class Say:
+        def __init__(self, text, voice=None, language=None):
+            self._text = text
+            self._voice = voice
+            self._language = language
+        def __str__(self):
+            return f'<Say>{self._text}</Say>'
 import os
 import csv
 import json
@@ -264,6 +291,11 @@ def export_logs():
         download_name=f'call_logs_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
     )
 
+
+@app.route('/health')
+def health():
+    return jsonify({"status": "ok", "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}), 200
+
 if __name__ == '__main__':
     print("=" * 60)
     print("Autodialer App Starting...")
@@ -271,6 +303,9 @@ if __name__ == '__main__':
     if not twilio_client:
         print("WARNING: Twilio credentials not configured!")
         print("Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_PHONE_NUMBER")
-    print("Access the app at: http://localhost:5000")
+    port = int(os.environ.get('PORT', 5000))
+    host = '0.0.0.0'
+    print(f"Access the app at: http://{host}:{port} or http://localhost:{port}")
     print("=" * 60)
-    app.run(debug=True, port=5000)
+    debug_mode = os.environ.get('FLASK_ENV', 'development') != 'production'
+    app.run(debug=debug_mode, host=host, port=port)
